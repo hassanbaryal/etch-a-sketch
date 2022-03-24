@@ -5,7 +5,7 @@
 //let user select initial location on popup
 //KEYS left37 up38 right39 down40
 let loc = 0;
-const container = document.querySelector('.container')
+const container = document.querySelector('.grid-container')
 let gridArray;
 let isDown = false
 
@@ -23,10 +23,6 @@ function createGrid(size) {
 
     grid.forEach(square => {
         square.setAttribute('style', `height: ${500/size}px; width: ${500/size}px `)
-        // square.addEventListener('mouseover', () => {
-        //     console.log('hello')
-        //     square.style.setProperty('background-color', 'red')
-        // })
         square.addEventListener('mouseover', function (e) {
             //console.log('hello')
             //square.style.setProperty('background-color', 'red')
@@ -41,23 +37,5 @@ function createGrid(size) {
 
 createGrid(10)
 
-
-// document.addEventListener('keydown', function (e) {
-    
-//     switch (e.key) {
-//         case 'ArrowDown':
-//             console.log('Down')
-//             break;
-//         case 'ArrowLeft':
-//             console.log('Left')
-//             break;
-//         case 'ArrowUp':
-//             console.log('Up')
-//             break;
-//         case 'ArrowRight':
-//             console.log('Right')
-//             break;
-//     }
-// })
 
 
