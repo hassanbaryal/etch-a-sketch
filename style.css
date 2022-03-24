@@ -16,12 +16,19 @@ body {
 .container {
     display: flex;
     flex-flow: row wrap;
-    max-width: 464px;
-    max-height: 464px;
+    max-width: 500px;
+    max-height: 500px;
 }
 
 .square {
-    border: 2px solid white;
+    box-sizing: border-box;
+    background-color: aliceblue;
+
     height: 25px;
     width: 25px;
+}
+
+
+.coloured {
+    color: white;
 }
