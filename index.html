@@ -10,13 +10,30 @@
 <body>
     
     <div class="heading">
-        <div class="title"></div>
+        <div class="title">Etch-A-Sketch</div>
     </div>
 
-    <div class="mid-container"></div>
-    <div class="grid-container">
+    <div class="mid-container">
+        <div class="settings-container">
+            <div class="color" style="color: black;">Colour: <input type="color" name="" class="color-selector"></div>
 
+            <div class="color-background" style="color: black;">Background Colour: <input type="color" class="bg-color-selector"></div>
+
+            <button class="rainbow-btn">Rainbow Mode: <span class="rainbow-mode">OFF</span></button>
+
+            <button class="clear-grid">Clear Grid</button>
+
+            <div class="slider-container">
+                <div>Grid Size: <span grid-size-value>16</span></div>
+                <input type="range" min="1" max="100" class="slider" value="16">
+            </div>
+        </div>
+
+        <div class="grid-container">
+
+        </div>
     </div>
+    
 
 
     <script src="./script.js"></script>
