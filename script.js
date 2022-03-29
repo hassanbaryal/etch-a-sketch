@@ -7,7 +7,7 @@
 let loc = 0;
 const container = document.querySelector('.grid-container')
 let gridArray;
-let isDown = false
+let isMouseDown = false
 let rainbowMode = false
 // Array of random colors used for rainbow mode
 let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
@@ -22,12 +22,15 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 let colorArrayIndex = 0
 
-document.addEventListener('mousedown', function (e) {isDown = true})
-document.addEventListener('mouseup', function (e) {isDown = false})
+// document.addEventListener('mousedown', function (e) {isMouseOver = true})
+// document.addEventListener('mouseup', function (e) {isMouseOver = false})
+document.addEventListener('mousedown', function (e) {isMouseDown = true})
+document.addEventListener('mouseup', function (e) {isMouseDown = false})
+
 document.querySelector(".clear-grid").addEventListener('click', clearGrid)
 const rainbowBtn = document.querySelector('.rainbow-btn')
 const backgroundColor = document.querySelector(".bg-color-selector")
-const squareColor = document.querySelector(".color-selector")
+const penColor = document.querySelector(".color-selector")
 const gridSize = document.querySelector(".size-slider")
 
 // When rainbow button is clicked, rainbow mode is turned on (true) and the color of each square
@@ -36,10 +39,12 @@ rainbowBtn.addEventListener('click', function (e) {
     if(rainbowMode) {
         document.querySelector('.rainbow-mode').textContent = `OFF`
         rainbowMode = false
+        penColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
     } else {
         document.querySelector('.rainbow-mode').textContent = `ON`
         rainbowMode = true
-        squareColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
+        penColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
+        //console.log('RAN*******************************')
     }
 })
 
@@ -79,14 +84,16 @@ function createGrid (size) {
     grid.forEach(square => {
         square.setAttribute('style', `height: ${500/size}px; width: ${500/size}px `)
         square.style.setProperty('background-color', `${backgroundColor.value}`)
-        square.addEventListener('mouseover', colourSquare)
+
+        square.addEventListener('mouseenter', colourSquare)
+        square.addEventListener('mousedown', function (e) {isMouseDown = true; colourSquare(e)})
      })
     gridArray = Array.from(grid)
 }
 
 
 function colourSquare (e) {
-    if (isDown) {
+    if (isMouseDown) {
         if (rainbowMode) {
             
             console.log(colorArrayIndex)
@@ -95,9 +102,9 @@ function colourSquare (e) {
             if (colorArrayIndex > (colorArray.length-1)) {
                 colorArrayIndex = 0
             }
-            squareColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
+            penColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
         } else {
-            e.target.style.setProperty('background-color', `${squareColor.value}`)
+            e.target.style.setProperty('background-color', `${penColor.value}`)
         }
         e.target.classList.add("colored")
     }
