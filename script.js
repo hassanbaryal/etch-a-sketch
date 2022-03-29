@@ -57,7 +57,7 @@ backgroundColor.addEventListener('input', function (e) {
 
 // This event listener changes the size of the grid and user changes the grid size slider
 gridSize.addEventListener('input', function (e) {
-    document.querySelector('.grid-size-value').textContent = `${gridSize.value}`
+    document.querySelector('.grid-size-value').textContent = `${gridSize.value}x${gridSize.value}`
     gridArray.forEach( square => {
         square.remove()
     })
