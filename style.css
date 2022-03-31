@@ -77,18 +77,6 @@ input {
     
 }
 
-/* .settings-container {
-    background-color: #929ba8;
-    height: 500px;
-    width: 275px;
-    border: 1px solid antiquewhite;
-    border-radius: 8px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-    gap: 45px;
-} */
 
 .grid-container {
     max-width: 500px;
