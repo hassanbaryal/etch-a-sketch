@@ -108,6 +108,8 @@ function createGrid (size) {
         square.setAttribute('style', `height: ${500/size}px; width: ${500/size}px `)
         square.style.setProperty('background-color', `${backgroundColor.value}`)
 
+        square.setAttribute('draggable', `false`)
+
         square.addEventListener('mouseenter', colourSquare)
         square.addEventListener('mousedown', function (e) {isMouseDown = true; colourSquare(e)})
      })
