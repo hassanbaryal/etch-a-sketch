@@ -5,20 +5,25 @@ html {
 body {
     /* margin: 0;
     height: 100%; */
-    background: black;
+    margin: 0;
+    background: #313639;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
     display: flex;
     flex-flow: column;
     align-items: center;
+    gap: 25px;
 }
 
 button {
-    background-color: #dadee6;
+    font-family: 'VT323', monospace;
+    background-color: #313639;
     border: 1px solid white;
     border-radius: 8px;
     padding: 4px 24px;
     font-weight: bold;
+    font-size: 20px;
     width: 200px;
     height: 35px;
 }
@@ -29,8 +34,11 @@ input {
 }
 
 .heading {
-    height: 250px;
+    height: 150px;
+    font-size: 150px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mid-container {
@@ -38,7 +46,38 @@ input {
     gap: 75px;
 }
 
+
+.bottom-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.circle {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    border-radius: 100px;
+}
 .settings-container {
+
+    width: 800px;
+    height: 200px;
+    border: 1px solid snow;
+    border-radius: 16px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    /* border-top: 20px solid blue;
+    border-left: 20px solid yellow; */
+    
+}
+
+/* .settings-container {
     background-color: #929ba8;
     height: 500px;
     width: 275px;
@@ -49,7 +88,7 @@ input {
     align-items: center;
     justify-content: center;
     gap: 45px;
-}
+} */
 
 .grid-container {
     max-width: 500px;

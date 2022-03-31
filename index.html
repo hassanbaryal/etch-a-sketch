@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-A-Sketch</title>
+    <title>Sketch-Dat-Ting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     
     <div class="heading">
-        <div class="title">Etch-A-Sketch</div>
+        <div class="title">Sketch-Dat-Ting</div>
     </div>
 
     <div class="mid-container">
-        <div class="settings-container">
+        <!-- <div class="settings-container">
             <div class="color" style="color: black;">Pen Colour: <input type="color" name="" class="color-selector" value="#ff0000"></div>
 
             <div class="color-background" style="color: black;">Background Colour: <input type="color" class="bg-color-selector" value="#FFFFFF"></div>
@@ -27,13 +30,36 @@
                 <div>Grid Size: <span class="grid-size-value">16x16</span></div>
                 <input type="range" min="1" max="30" class="size-slider" value="16">
             </div>
-        </div>
+        </div> -->
 
         <div class="grid-container">
 
         </div>
     </div>
     
+    <div class="bottom-container">
+        <div class="circle left"></div>
+
+        <div class="settings-container">
+            <div class="color" style="color: black;">Pen Colour: <input type="color" name="" class="color-selector" value="#ff0000"></div>
+
+            <div class="color-background" style="color: black;">Background Colour: <input type="color" class="bg-color-selector" value="#FFFFFF"></div>
+
+            <button class="rainbow-btn">Rainbow Mode: <span class="rainbow-mode">OFF</span></button>
+
+            <button class="eraser-btn">Toggle Eraser</button>
+
+            <button class="clear-grid">Clear Grid</button>
+
+            <div class="slider-container">
+                <div>Grid Size: <span class="grid-size-value">16x16</span></div>
+                <input type="range" min="1" max="30" class="size-slider" value="16">
+            </div>
+        </div>
+
+
+        <div class="circle right"></div>
+    </div>
 
 
     <script src="./script.js"></script>
