@@ -1,14 +1,10 @@
-//IDEAS
-//to go up and down add/subtract by width/height of grid. e.g. add/subtract 16 if 16x16 grid
-//add colour pallette thing to change colour
-//modal popup on page load to let user select size of grid, 16x16, 32x32, 64x64
-//let user select initial location on popup
-//KEYS left37 up38 right39 down40
+
 let loc = 0;
 const container = document.querySelector('.grid-container')
 let gridArray;
 let isMouseDown = false
 let rainbowMode = false
+let eraserMode = false
 // Array of random colors used for rainbow mode
 let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
 		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -22,20 +18,48 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 let colorArrayIndex = 0
 
-// document.addEventListener('mousedown', function (e) {isMouseOver = true})
-// document.addEventListener('mouseup', function (e) {isMouseOver = false})
 document.addEventListener('mousedown', function (e) {isMouseDown = true})
 document.addEventListener('mouseup', function (e) {isMouseDown = false})
 
-document.querySelector(".clear-grid").addEventListener('click', clearGrid)
+const eraserBtn = document.querySelector('.eraser-btn')
+const clearGridBtn = document.querySelector('.clear-grid')
 const rainbowBtn = document.querySelector('.rainbow-btn')
 const backgroundColor = document.querySelector(".bg-color-selector")
 const penColor = document.querySelector(".color-selector")
 const gridSize = document.querySelector(".size-slider")
 
+
+
+eraserBtn.addEventListener('click', function (e) {
+    //Disables rainbow mode if rainbow button is toggled
+     if (rainbowMode) {
+         rainbowBtn.click()
+    }
+
+    eraserBtn.classList.toggle('activated')
+    if (eraserMode) {
+        eraserMode = false
+    } else {
+        eraserMode = true
+    }
+
+})
+
+//clears grid of all pen colouring
+clearGridBtn.addEventListener('click', function (e) {
+    e.target.classList.toggle('activated')
+    setTimeout(clearGrid, 500)
+})
+
 // When rainbow button is clicked, rainbow mode is turned on (true) and the color of each square
 // is reandomly selected from colorArray
 rainbowBtn.addEventListener('click', function (e) {
+    // Disables eraser if eraser mode is toggled
+    if(eraserMode) {
+        eraserBtn.click()
+    }
+
+    rainbowBtn.classList.toggle('activated')
     if(rainbowMode) {
         document.querySelector('.rainbow-mode').textContent = `OFF`
         rainbowMode = false
@@ -44,7 +68,6 @@ rainbowBtn.addEventListener('click', function (e) {
         document.querySelector('.rainbow-mode').textContent = `ON`
         rainbowMode = true
         penColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
-        //console.log('RAN*******************************')
     }
 })
 
@@ -95,18 +118,21 @@ function createGrid (size) {
 function colourSquare (e) {
     if (isMouseDown) {
         if (rainbowMode) {
-            
-            console.log(colorArrayIndex)
             e.target.style.setProperty('background-color', `${colorArray[colorArrayIndex]}`)
             colorArrayIndex++
             if (colorArrayIndex > (colorArray.length-1)) {
                 colorArrayIndex = 0
             }
             penColor.setAttribute('value', `${colorArray[colorArrayIndex]}`)
+            e.target.classList.add("colored")
+        } else if (eraserMode) {
+            e.target.style.setProperty('background-color', `${backgroundColor.value}`)
+            e.target.classList.remove('colored')
         } else {
             e.target.style.setProperty('background-color', `${penColor.value}`)
+            e.target.classList.add("colored")
         }
-        e.target.classList.add("colored")
+        
     }
 }
 
@@ -117,6 +143,7 @@ function clearGrid () {
         gridArray[i].style.setProperty('background-color', `${backgroundColor.value}`)
         gridArray[i].classList.remove('colored')
     }
+    clearGridBtn.classList.toggle('activated')
 }
 
 createGrid(gridSize.value)

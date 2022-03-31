@@ -101,6 +101,13 @@ input {
     width: 25px;
 }
 
+.activated {
+    transform: scale(1.1);
+    background-color: aliceblue;
+    border-color: aliceblue;
+    box-shadow: 0 0 1rem aliceblue;
+  }
+  
 
 .colored {
     padding: 0;
